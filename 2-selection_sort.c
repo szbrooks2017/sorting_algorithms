@@ -5,7 +5,7 @@ void selection_sort(int *array, size_t size)
     size_t x, lowIndex, element, subArray;
     int tmp;
 
-    if (array) 
+    if (array && size > 1) 
     {
         tmp = array[0];
         lowIndex = 0;
@@ -31,8 +31,11 @@ void selection_sort(int *array, size_t size)
                     array[element] = tmp;
                 }
             }
-            
-            print_array(array, size);
+            if (lowIndex != elemnt)
+            {
+              /** print array if something has changed **/
+              print_array(array, size);
+            }
         }
     }
 }
