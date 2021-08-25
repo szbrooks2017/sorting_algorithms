@@ -31,7 +31,7 @@ void selection_sort(int *array, size_t size)
                     array[element] = tmp;
                 }
             }
-            if (lowIndex != elemnt)
+            if (lowIndex != element)
             {
               /** print array if something has changed **/
               print_array(array, size);
