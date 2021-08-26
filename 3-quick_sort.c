@@ -1,5 +1,15 @@
 #include "sort.h"
 
+
+void swap(int *array, int first, int second)
+{
+	int tmp;
+	tmp = array[first];
+
+	array[first] = array[second];
+	array[second] = tmp;
+}
+
 /**
  * make a pivot, so its position to the left is smaller
  * and the position to the right is greater
@@ -29,45 +39,43 @@ void sort(int* array, int low, int high, size_t size)
 		pivotIndex = partition(array, low, high, size);
 		/* apply quicksort for left and right*/
 		sort(array, low, pivotIndex - 1, size);
-		sort(array, pivotIndex, high, size);
+		sort(array, pivotIndex + 1, high, size);
 	}
 }
 
 int partition(int *array, int low, int high, size_t size)
 {	
-	int pivotIndex, i, j, tmp;
-	pivotIndex = high;
-	i = low;
-	j = pivotIndex - 1;
+	int pivotIndex = low;
+	int pivot = array[high];
+	int i;
+	/*j = pivotIndex - 1;*/
 	/* move all the lowest to the left and all the greater to right*/
-	while (i < j)
+	for (i = low; i < high; i++)
 	{
-		while (array[i] <= array[pivotIndex])
+		if (array[i] < pivot)
 		{
+			swap (array, i, pivotIndex);
+			if (pivotIndex != i)
+			{
+				print_array(array, size);
+			}
 			/* move left to right seeking value greater than pivot */
-			i++;
+			pivotIndex++;
 		}
-		while (array[j] >= array[pivotIndex])
-		{
-			/* move right to left seeking value less than pivot */
-			j++;
-		}
-		if (i < j)
-		{
-			/* if i has not passed j, swap found values */
-			tmp = array[i];
-			array[i] = array[j];
-			array[j] = tmp;
-			print_array(array, size);
+		if (array[i] > pivot)
+		{			
+			swap (array, pivotIndex, high);
+			if (pivotIndex != i)
+			{
+				print_array(array, size);
+			}
+			/* move left to right seeking value greater than pivot */
 		}
 	}
 	/* swap pivot with last found higher value */
-	tmp = array[pivotIndex];
-	array[pivotIndex] = array[i];
-	array[i] = tmp;
-	if (i != pivotIndex)
+/*	if (i != pivotIndex)
 	{
 		print_array(array, size);
-	}
-	return (i);
+	}*/
+	return (pivotIndex);
 }
