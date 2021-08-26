@@ -28,8 +28,8 @@ void sort(int* array, int low, int high, size_t size)
 		/* find the index of the pivot*/
 		pivotIndex = partition(array, low, high, size);
 		/* apply quicksort for left and right*/
-		sort(array, low, pivotIndex, size);
-		sort(array, pivotIndex + 1, high, size);
+		sort(array, low, pivotIndex - 1, size);
+		sort(array, pivotIndex, high, size);
 	}
 }
 
