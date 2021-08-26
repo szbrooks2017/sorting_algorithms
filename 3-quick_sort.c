@@ -52,7 +52,7 @@ int partition(int *array, int low, int high, size_t size)
 	/* move all the lowest to the left and all the greater to right*/
 	for (i = low; i < high; i++)
 	{
-		if (array[i] < pivot)
+		if (array[i] <= pivot)
 		{
 			swap (array, i, pivotIndex);
 			if (pivotIndex != i)
@@ -62,7 +62,7 @@ int partition(int *array, int low, int high, size_t size)
 			/* move left to right seeking value greater than pivot */
 			pivotIndex++;
 		}
-		if (array[i] > pivot)
+		if (array[i] => pivot)
 		{			
 			swap (array, pivotIndex, high);
 			if (pivotIndex != i)
