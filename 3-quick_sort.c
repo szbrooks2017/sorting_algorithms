@@ -35,8 +35,8 @@ void sort(int* array, int low, int high, size_t size)
 
 int partition(int *array, int low, int high, size_t size)
 {	
-	int pivotIndex = high;
-	int i, j, tmp;
+	int pivotIndex, i, j, tmp;
+	pivotIndex = high;
 	i = low;
 	j = pivotIndex - 1;
 	/* move all the lowest to the left and all the greater to right*/
@@ -52,7 +52,7 @@ int partition(int *array, int low, int high, size_t size)
 			/* move right to left seeking value less than pivot */
 			j++;
 		}
-		if (i < j)
+		if (i > j)
 		{
 			/* if i has not passed j, swap found values */
 			tmp = array[i];
