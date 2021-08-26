@@ -24,7 +24,6 @@ void swap(int *array, int first, int second)
 
 void quick_sort(int *array, size_t size)
 {
-	printf("%zu\n", size);
 	/* null check */
 	if (array)
 	{
