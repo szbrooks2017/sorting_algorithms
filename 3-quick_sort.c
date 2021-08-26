@@ -1,22 +1,25 @@
 #include "sort.h"
 
+/**
+ * swap - swaps two ints
+ * @array: array to swap
+ * @first: first index
+ * @second: second number to swap
+ */
 
 void swap(int *array, int first, int second)
 {
 	int tmp;
-	tmp = array[first];
 
+	tmp = array[first];
 	array[first] = array[second];
 	array[second] = tmp;
 }
 
 /**
- * make a pivot, so its position to the left is smaller
- * and the position to the right is greater
- * quick sort left, quick sort right.
- * 
- * element at array[j] <= pivot index, true i++, swap(arr[i], arr[j]), print
- * 
+ * quick_sort - sort the array from low to high
+ * @array: array to sort
+ * @size: size of the array
  */
 
 void quick_sort(int *array, size_t size)
@@ -29,7 +32,15 @@ void quick_sort(int *array, size_t size)
 	}
 }
 
-void sort(int* array, int low, int high, size_t size)
+/**
+ * sort - recursively sorts the elements low to high
+ * @array: the array to sort
+ * @low: point to start
+ * @high: point to end
+ * @size: size of the array
+ */
+
+void sort(int *array, int low, int high, size_t size)
 {
 	int pivotIndex;
 	/* check for at least 2 values */
@@ -43,8 +54,17 @@ void sort(int* array, int low, int high, size_t size)
 	}
 }
 
+/**
+ * partition - parts an array at pivot index
+ * @array: array to be sorted
+ * @low: beginning of the comparison
+ * @high: the end
+ * @size: size of the array
+ * Return: the index of the pivot number
+ */
+
 int partition(int *array, int low, int high, size_t size)
-{	
+{
 	int pivotIndex = low;
 	int pivot = array[high];
 	int i;
@@ -54,7 +74,7 @@ int partition(int *array, int low, int high, size_t size)
 	{
 		if (array[i] < pivot)
 		{
-			swap (array, i, pivotIndex);
+			swap(array, i, pivotIndex);
 			if (pivotIndex != i)
 			{
 				print_array(array, size);
@@ -63,7 +83,7 @@ int partition(int *array, int low, int high, size_t size)
 			pivotIndex++;
 		}
 	}
-	swap (array, pivotIndex, high);
+	swap(array, pivotIndex, high);
 	if (pivotIndex != high)
 	{
 		print_array(array, size);
