@@ -15,7 +15,7 @@ void quick_sort(int *array, size_t size)
 	if (array)
 	{
 		/* sort from lowest to highest, recursively */
-		sort(array, 0, size - 1, size)
+		sort(array, 0, size - 1, size);
 	}
 }
 
@@ -37,15 +37,17 @@ int partition(int *array, int low, int high, size_t size)
 {	
 	int pivotIndex = high;
 	int i, j, tmp;
+	i = low;
+	j = pivotIndex - 1;
 	/* move all the lowest to the left and all the greater to right*/
 	while (i < j)
 	{
-		while (array[i] <= pivot)
+		while (array[i] <= array[pivotIndex])
 		{
 			/* move left to right seeking value greater than pivot */
 			i++;
 		}
-		while (array[j] >= pivot)
+		while (array[j] >= array[pivotIndex])
 		{
 			/* move right to left seeking value less than pivot */
 			j++;
@@ -67,4 +69,5 @@ int partition(int *array, int low, int high, size_t size)
 	{
 		print_array(array, size);
 	}
+	return (i);
 }
