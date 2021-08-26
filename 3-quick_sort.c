@@ -24,6 +24,7 @@ void swap(int *array, int first, int second)
 
 void quick_sort(int *array, size_t size)
 {
+	printf("%zu\n", size);
 	/* null check */
 	if (array)
 	{
@@ -72,7 +73,7 @@ int partition(int *array, int low, int high, size_t size)
 	/* move all the lowest to the left and all the greater to right*/
 	for (i = low; i < high; i++)
 	{
-		if (array[i] < pivot)
+		if (array[i] <= pivot)
 		{
 			swap(array, i, pivotIndex);
 			if (pivotIndex != i)
@@ -88,6 +89,5 @@ int partition(int *array, int low, int high, size_t size)
 	{
 		print_array(array, size);
 	}
-			/* move left to right seeking value greater than pivot */
 	return (pivotIndex);
 }
