@@ -27,5 +27,7 @@ void quick_sort(int *array, size_t size);
 void selection_sort(int *array, size_t size);
 void sort(int* array, int low, int high, size_t size);
 int partition(int *array, int low, int high, size_t size);
+/* adding swap*/
+void swap(int *array, int first, int second);
 
 #endif
